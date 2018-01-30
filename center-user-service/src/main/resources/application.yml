@@ -1,0 +1,47 @@
+#######################################################
+server:
+    port: 8001
+#######################################################
+
+#######################################################
+eureka:
+    client:
+        service-url:
+            #注册中心
+            defaultZone: http://admin:admin@localhost:8000/eureka
+    instance:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+#######################################################
+
+#######################################################
+spring:
+    application:
+      name: center-user-service
+################################
+#   mysql配置
+    datasource:
+        url: jdbc:mysql://localhost:3306/test
+        username: root
+        password:
+        driver-class-name: com.mysql.jdbc.Driver
+#######################################################
+
+#######################################################
+# mybatis mapper xml 配置
+mybatis:
+  type-aliases-package:
+  mapper-locations: classpath:sqlmap/*/*.xml
+  config-location: classpath:sqlmap/sqlmap-config.xml
+#######################################################
+
+#######################################################
+#   打印日志
+logging:
+    level:
+        root: INFO
+        org.hibernate: INFO
+        org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+        org.bibernate.type.descriptor.sql.BasicExtractor: TRACE
+        com.springms: DEBUG
+#######################################################

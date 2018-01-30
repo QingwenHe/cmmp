@@ -1,0 +1,22 @@
+server:
+    port: 8000
+
+# ÅäÖÃ eureka µÇÂ¼ÃÜÂë
+security:
+    basic:
+        enabled: true
+    user:
+        name: admin
+        password: admin
+
+eureka:
+    datacenter: CMMP
+    environment: DEV
+    client:
+        register-with-eureka: false
+        fetch-registry: false
+        service-url:
+            defaultZone: http://admin:admin@localhost:8000/eureka
+        healthcheck:
+            enabled: true
+    instance:
